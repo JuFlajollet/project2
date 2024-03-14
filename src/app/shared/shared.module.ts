@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { NgChartsModule } from "ng2-charts";
+import { BaseChartDirective } from 'ng2-charts';
 import { MedalsPieChartComponent } from "./components/medals-pie-chart/medals-pie-chart.component";
 
 @NgModule({
@@ -7,7 +7,7 @@ import { MedalsPieChartComponent } from "./components/medals-pie-chart/medals-pi
         MedalsPieChartComponent
     ],
     imports: [
-        NgChartsModule
+        BaseChartDirective
     ],
     exports: [
         MedalsPieChartComponent
