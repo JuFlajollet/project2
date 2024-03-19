@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable} from 'rxjs';
+import { catchError, filter, map, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
 
 @Injectable({
@@ -9,13 +9,13 @@ import { OlympicCountry } from '../models/Olympic';
 })
 export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
-  private olympics$ = new ReplaySubject<OlympicCountry[]>(); // TODO: Check if we need a BehaviourSubject or not (because I don't see which value to initialize with)
+  private olympics$ = new BehaviorSubject<OlympicCountry[]>([]); 
 
   constructor(private http: HttpClient) {}
 
   loadInitialData(): Observable<OlympicCountry[]> {
     return this.http.get<OlympicCountry[]>(this.olympicUrl).pipe(
-      tap((value) => this.olympics$.next(value)),
+      tap((value: OlympicCountry[]) => this.olympics$.next(value)),
       catchError((error, caught) => {
         // TODO: improve error handling
         console.error(error);
@@ -29,4 +29,19 @@ export class OlympicService {
   getOlympics(): Observable<OlympicCountry[]> {
     return this.olympics$.asObservable();
   }
+
+  getOlympicCountryById(olympicCountryId: number): Observable<OlympicCountry> {
+    return this.getOlympics().pipe(
+      map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.id === olympicCountryId)[0])
+    );
+  }
+
+/*   getOlympicMedalsByCountryName(olympicCountryName: string): Observable<number> {
+    let totalMedals = 0;
+    
+    return this.getOlympics().pipe(
+      map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.country === olympicCountryName)[0]),
+      map((olympicCountry: OlympicCountry) => olympicCountry.participations.forEach((participation) => totalMedals += participation.medalsCount))
+    );
+  } */
 }

@@ -1,9 +1,13 @@
 <p>medals-pie-chart works!</p>
 
-<div class="pie-chart-wrapper">
-    <canvas baseChart 
-        [data]="pieChartData" 
-        [type]="pieChartType"
-        [options]="pieChartOptions">
-    </canvas>
-</div>
+<ngx-charts-pie-chart *ngIf="pieData$ | async as data"
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="data"
+    [labels]="showLabels"
+    [doughnut]="isDoughnut"
+  >
+  <ng-template #tooltipTemplate let-model="model">
+    <h2>{{ model.name }}: <div class="medal-tooltip"><img src="../assets/img/medal-solid.svg"> {{ model.value }}</div></h2>
+  </ng-template>
+</ngx-charts-pie-chart>
