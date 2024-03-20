@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -20,7 +19,7 @@ export class DetailComponent implements OnInit {
   constructor(
     private olympicService: OlympicService,
     private route: ActivatedRoute,
-    private location: Location
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +33,7 @@ export class DetailComponent implements OnInit {
   }
 
   onClick(): void {
-    this.location.back();
+    this.router.navigateByUrl("/");
   }
 
 }

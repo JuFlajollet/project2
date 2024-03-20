@@ -1,8 +1,15 @@
 <div *ngIf="olympicCountry$ | async as olympicCountry">
-    <h2> {{ olympicCountry.country }}</h2>
-    <div> Number of entries {{ sumParticipations }}</div>
-    <div> Total number medals {{ sumMedals }}</div>
-    <div> Total number athletes {{ sumAthletes }}</div>
-    <app-medals-by-dates-line-chart [country]="olympicCountry.country"></app-medals-by-dates-line-chart>
-    <button (click)="onClick()">Back</button>
+    <h2 class="container-filled"> {{ olympicCountry.country }}</h2>
+    <div class="box">
+        <div class="container"> Number of entries <br/> <b>{{ sumParticipations }}</b></div>
+        <div class="container"> Total number medals <br/> <b>{{ sumMedals }}</b></div>
+        <div class="container"> Total number athletes <br/> <b>{{ sumAthletes }}</b></div>
+    </div>
+    <br/>
+    <div class="box">
+        <app-medals-by-dates-line-chart [country]="olympicCountry.country"></app-medals-by-dates-line-chart>
+    </div>
+    <div class="box box-hover">
+        <button class="container-filled" (click)="onClick()">Back</button>
+    </div>
 </div>

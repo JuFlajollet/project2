@@ -28,7 +28,7 @@ export class MedalsByDatesLineChartComponent implements OnInit {
   animations: boolean = true;
   xAxis: boolean = true;
   yAxis: boolean = true;
-  showYAxisLabel: boolean = true;
+  showYAxisLabel: boolean = false;
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Dates';
   yAxisLabel: string = 'Medals';
