@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable} from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
+import { Participation } from '../models/Participation';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,43 @@ export class OlympicService {
     return this.getOlympics().pipe(
       map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.id === olympicCountryId)[0])
     );
+  }
+
+  getOlympicCountryByCountry(country: string): Observable<OlympicCountry> {
+    return this.getOlympics().pipe(
+      map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.country === country)[0])
+    );
+  }
+
+  sumMedals(participations: Participation[]): number {
+    let totalMedals = 0;
+
+    participations.forEach(
+      (participation: Participation) => totalMedals += participation.medalsCount
+    );
+
+    return totalMedals;
+  }
+
+  //TODO : Find a way to avoid duplicating logic for all sum functions
+  sumAthletes(participations: Participation[]): number {
+    let totalAthletes = 0;
+
+    participations.forEach(
+      (participation: Participation) => totalAthletes += participation.athleteCount
+    );
+
+    return totalAthletes;
+  }
+
+  sumParticipations(participations: Participation[]): number {
+    let totalParticipations = 0;
+
+    participations.forEach(
+      () => totalParticipations++
+    );
+
+    return totalParticipations;
   }
 
 /*   getOlympicMedalsByCountryName(olympicCountryName: string): Observable<number> {

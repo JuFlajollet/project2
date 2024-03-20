@@ -1,0 +1,8 @@
+<div *ngIf="olympicCountry$ | async as olympicCountry">
+    <h2> {{ olympicCountry.country }}</h2>
+    <div> Number of entries {{ sumParticipations }}</div>
+    <div> Total number medals {{ sumMedals }}</div>
+    <div> Total number athletes {{ sumAthletes }}</div>
+    <app-medals-by-dates-line-chart [country]="olympicCountry.country"></app-medals-by-dates-line-chart>
+    <button (click)="onClick()">Back</button>
+</div>

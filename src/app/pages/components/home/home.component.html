@@ -1,5 +1,8 @@
-<h2>Olympic games app</h2>
+<h1>Olympic games app</h1>
 <hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
-<hr />
-<app-medals-pie-chart></app-medals-pie-chart>
+<div>
+    <h2> Medals per Country </h2>
+    <div> Number of JOs </div>
+    <div> Number of countries </div>
+</div>
+<app-medals-by-country-pie-chart></app-medals-by-country-pie-chart>
