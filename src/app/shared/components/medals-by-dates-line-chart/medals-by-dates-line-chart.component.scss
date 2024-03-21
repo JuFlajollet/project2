@@ -1,0 +1,12 @@
+::ng-deep ngx-tooltip-content.ngx-charts-tooltip-content.type-tooltip {
+    .tooltip-caret.position-top {
+      border-top-color: #04AA6D;
+    }
+    .tooltip-caret.position-right {
+        border-right-color: #04AA6D;
+    }
+    border-radius: 15px;
+    background-color: #04AA6D;
+    color: white;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}

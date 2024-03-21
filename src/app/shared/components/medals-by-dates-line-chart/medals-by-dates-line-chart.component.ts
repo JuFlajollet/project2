@@ -16,14 +16,13 @@ export class MedalsByDatesLineChartComponent implements OnInit {
   @Input()
   country!: string;
 
-  view: [number, number] = [700, 300];
-
   olympicData: ChartLineData[] = [];
   olympicDataSeries: ChartLineDataSerie[] = [];
 
   lineData$!: Observable<ChartLineData[]>;
 
   // options for line chart
+  view: [number, number] = [700, 300];
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;

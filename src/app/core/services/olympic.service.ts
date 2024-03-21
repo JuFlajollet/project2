@@ -43,6 +43,10 @@ export class OlympicService {
     );
   }
 
+  sumCountries(olympicCountries: OlympicCountry[]): number {
+    return olympicCountries.length;
+  }
+
   sumMedals(participations: Participation[]): number {
     let totalMedals = 0;
 
@@ -53,7 +57,6 @@ export class OlympicService {
     return totalMedals;
   }
 
-  //TODO : Find a way to avoid duplicating logic for all sum functions
   sumAthletes(participations: Participation[]): number {
     let totalAthletes = 0;
 
@@ -65,21 +68,19 @@ export class OlympicService {
   }
 
   sumParticipations(participations: Participation[]): number {
-    let totalParticipations = 0;
-
-    participations.forEach(
-      () => totalParticipations++
-    );
-
-    return totalParticipations;
+    return participations.length;
   }
 
-/*   getOlympicMedalsByCountryName(olympicCountryName: string): Observable<number> {
-    let totalMedals = 0;
-    
-    return this.getOlympics().pipe(
-      map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.country === olympicCountryName)[0]),
-      map((olympicCountry: OlympicCountry) => olympicCountry.participations.forEach((participation) => totalMedals += participation.medalsCount))
+  sumJOs(olympicCountries: OlympicCountry[]): number {
+    let JOParticipations = new Map<string, number>();
+
+    olympicCountries.flatMap(olympicCountry => olympicCountry.participations).forEach(
+      (participation) => JOParticipations.set(participation.city, participation.year)
     );
-  } */
+
+    // Only take JO participations where both year and city are different
+    let totalJOs = [...new Set(JOParticipations)];
+
+    return totalJOs.length;
+  }
 }

@@ -7,6 +7,17 @@
     (select)="onSelect($event)"
   >
   <ng-template #tooltipTemplate let-model="model">
-    <h2>{{ model.name }}: <div class="medal-tooltip"><img src="../assets/img/medal-solid.svg"> {{ model.value }}</div></h2>
+    <div class="tooltip">
+      <div class="tooltip-box">{{ model.name }}</div>
+      <br/>
+      <div class="tooltip-box">
+        <div class="tooltip-container">
+          <img src="../assets/img/medal-solid.svg">
+        </div>
+        <div class="tooltip-container">
+          {{ model.value }}
+        </div>
+      </div>
+    </div>
   </ng-template>
 </ngx-charts-pie-chart>

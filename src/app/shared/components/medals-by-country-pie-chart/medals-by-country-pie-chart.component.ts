@@ -12,11 +12,12 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 })
 export class MedalsByCountryPieChartComponent implements OnInit {
 
-  pieData$!: Observable<ChartPieData[]>;
   olympicData: ChartPieData[] = [];
-  view: [number, number] = [700, 400];
+
+  pieData$!: Observable<ChartPieData[]>;
 
   // options for pie chart
+  view: [number, number] = [700, 400];
   showLegend: boolean = true;
   showLabels: boolean = true;
   isDoughnut: boolean = false;

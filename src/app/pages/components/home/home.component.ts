@@ -9,11 +9,19 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public olympics$!: Observable<OlympicCountry[]>;
+  public olympicCountrys$!: Observable<OlympicCountry[]>;
+
+  public sumCountries!: number;
+  public sumJOs!: number;
 
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    this.olympics$ = this.olympicService.getOlympics();
+    this.olympicCountrys$ = this.olympicService.getOlympics();
+
+    this.olympicCountrys$.subscribe((olympicCountries: OlympicCountry[]) => {
+      this.sumCountries = this.olympicService.sumCountries(olympicCountries);
+      this.sumJOs = this.olympicService.sumJOs(olympicCountries);
+    });
   }
 }
