@@ -5,6 +5,7 @@ import { NotFoundComponent } from "./components/not-found/not-found.component";
 import { SharedModule } from "../shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from "@angular/common";
+import { CoreModule } from "../core/core.module";
 
 @NgModule({
     declarations: [

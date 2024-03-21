@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-    text-align: center;
+@font-face {
+    font-family: 'Roboto';
+    src: url('/assets/font/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-h1 {
+body {
     text-align: center;
-    background-color: #EEE;
-    margin-bottom: 20px;
-    padding: 10px;
+    font-family: 'Roboto';
 }
 
 h2 {
