@@ -41,6 +41,7 @@ export class MedalsByCountryPieChartComponent implements OnInit {
   }
 
   onSelect(data: ChartPieData): void {
-    this.router.navigateByUrl(`${data.name}`);
+    const countryName = data.name.replace(" ","%20");
+    this.router.navigateByUrl(`${countryName}`);
   }
 }

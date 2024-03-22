@@ -39,7 +39,7 @@ export class OlympicService {
 
   getOlympicCountryByCountry(country: string): Observable<OlympicCountry> {
     return this.getOlympics().pipe(
-      map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.country === country)[0])
+      map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.country.localeCompare(country, undefined, { sensitivity: 'base' }) === 0)[0])
     );
   }
 
@@ -72,14 +72,14 @@ export class OlympicService {
   }
 
   sumJOs(olympicCountries: OlympicCountry[]): number {
-    let JOParticipations = new Map<string, number>();
+    const JOParticipations = new Map<string, number>();
 
     olympicCountries.flatMap(olympicCountry => olympicCountry.participations).forEach(
       (participation) => JOParticipations.set(participation.city, participation.year)
     );
 
     // Only take JO participations where both year and city are different
-    let totalJOs = [...new Set(JOParticipations)];
+    const totalJOs = [...new Set(JOParticipations)];
 
     return totalJOs.length;
   }
