@@ -26,9 +26,11 @@ export class DetailComponent implements OnInit {
     const country: string = this.route.snapshot.params['country'];
     this.olympicCountry$ = this.olympicService.getOlympicCountryByCountry(country);
     this.olympicCountry$.subscribe((olympicCountry: OlympicCountry) => {
-      this.sumParticipations = this.olympicService.sumParticipations(olympicCountry.participations);
-      this.sumMedals = this.olympicService.sumMedals(olympicCountry.participations);
-      this.sumAthletes = this.olympicService.sumAthletes(olympicCountry.participations);
+      if(olympicCountry){
+        this.sumParticipations = this.olympicService.sumParticipations(olympicCountry.participations);
+        this.sumMedals = this.olympicService.sumMedals(olympicCountry.participations);
+        this.sumAthletes = this.olympicService.sumAthletes(olympicCountry.participations);
+      }
     });
   }
 
