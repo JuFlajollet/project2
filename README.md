@@ -23,19 +23,17 @@ The application will automatically reload if you change any of the source files.
 Run `ng build` to build the project.\
 The build artifacts will be stored in the `dist/` directory.
 
+## Architecture
+
 ## How it works
 
 ### Home page
 
-![Image of the home page](src/assets/img/homepage.png)
-\
-\
-\
-###  Detail on a country 
-(_By clicking on the corresponding slice of the pie chart on home page_)
-![Image of the detail page](src/assets/img/detailpage.PNG)
+![Image of the home page](src/assets/img/homepage.PNG)
 
-## Architecture
+###  Detail on a country 
+(_By clicking on the corresponding slice of the pie chart on home page_)\
+![Image of the detail page](src/assets/img/detailpage.PNG)
 
 
 
