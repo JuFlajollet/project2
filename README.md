@@ -32,9 +32,9 @@ The build artifacts will be stored in the `dist/` directory.
 
 This project follows a custom architecture (in addition to the [default angular one](https://angular.io/guide/file-structure)) which includes:
 
-- `core` folder: contains the business logic (_services_ and _models_) as well as _unique components_ such as header.
-- `pages` folder: contains _components used for routing_.
-- `shared` folder: contains every _reusable components_ such as charts and loading spinner.
+- `core` folder: contains the business logic (_`services`_ and _`models`_) as well as _`unique components`_ such as header.
+- `pages` folder: contains _`components used for routing`_.
+- `shared` folder: contains every _`reusable components`_ such as charts and loading spinner.
 
 ## Demo
 
