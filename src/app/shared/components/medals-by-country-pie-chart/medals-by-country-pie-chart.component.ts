@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, map, of, tap } from 'rxjs';
 import { ChartPieData } from 'src/app/core/models/ChartPieData';
@@ -17,11 +17,9 @@ export class MedalsByCountryPieChartComponent implements OnInit {
   pieData$!: Observable<ChartPieData[]>;
 
   // options for pie chart
-  view: [number, number] = [700, 400];
-  showLegend: boolean = true;
+  view: [number, number] = [800, 400];
   showLabels: boolean = true;
   isDoughnut: boolean = false;
-  legendPosition: string = 'below';
   colorScheme: string = "cool";
 
   constructor(
@@ -30,6 +28,7 @@ export class MedalsByCountryPieChartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.updateChartSize();
     this.olympicService.getOlympics().pipe(
       map((olympicCountrys: OlympicCountry[]) =>
         olympicCountrys.forEach((olympicCountry) => 
@@ -43,5 +42,13 @@ export class MedalsByCountryPieChartComponent implements OnInit {
   onSelect(data: ChartPieData): void {
     const countryName = data.name.replace(" ","%20");
     this.router.navigateByUrl(`${countryName}`);
+  }
+
+  @HostListener("window:resize", []) updateChartSize() {
+    if (window.innerWidth  >= 768) {
+      this.view = [800, 400];
+    } else {
+      this.view = [400, 400];
+    }
   }
 }

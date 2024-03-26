@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Observable, map, of, tap } from 'rxjs';
 import { ChartLineData } from 'src/app/core/models/ChartLineData';
 import { ChartLineDataSerie } from 'src/app/core/models/ChartLineDataSerie';
@@ -39,6 +39,7 @@ export class MedalsByDatesLineChartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.updateChartSize();
     this.olympicService.getOlympicCountryByCountry(this.country).pipe(
       map((olympicCountry: OlympicCountry) =>
         olympicCountry.participations.forEach((participation) => 
@@ -48,5 +49,13 @@ export class MedalsByDatesLineChartComponent implements OnInit {
       tap(() => this.olympicData.push({name: this.country, series: this.olympicDataSeries})),
       tap(() => this.lineData$ = of([...this.olympicData]))
     ).subscribe();
+  }
+
+  @HostListener("window:resize", []) updateChartSize() {
+    if (window.innerWidth  >= 768) {
+      this.view = [700, 300];
+    } else {
+      this.view = [320, 300];
+    }
   }
 }
