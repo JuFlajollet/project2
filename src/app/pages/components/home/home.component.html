@@ -1,14 +1,16 @@
-<div>
+<div *ngIf="olympicCountrys$ | async as olympicCountrys; else loading">
     <div class="box">
         <h2 class="container-filled"> Medals per Country </h2>
     </div>
-    <div *ngIf="olympicCountrys$ | async as olympicCountrys">
-        <div class="box">
-            <div class="container"> Number of JOs <br/> <b>{{ sumJOs }}</b></div>
-            <div class="container"> Number of countries <br/> <b>{{ sumCountries }}</b></div>
-        </div>
+    <div class="box">
+        <div class="container"> Number of JOs <br/> <b>{{ sumJOs }}</b></div>
+        <div class="container"> Number of countries <br/> <b>{{ sumCountries }}</b></div>
     </div>
 </div>
 <div class="box">
     <app-medals-by-country-pie-chart></app-medals-by-country-pie-chart>
 </div>
+
+<ng-template #loading>
+    <app-loading-spinner></app-loading-spinner>
+</ng-template>
