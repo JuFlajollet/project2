@@ -5,7 +5,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { LoadingSpinnerComponent } from 'src/app/shared/components/loading-spinner/loading-spinner.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MedalsByDatesLineChartComponent } from 'src/app/shared/components/medals-by-dates-line-chart/medals-by-dates-line-chart.component';
-import { AppComponent } from 'src/app/app.component';
 import { HomeComponent } from '../home/home.component';
 import { ErrorComponent } from '../error/error.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
