@@ -25,14 +25,15 @@ The build artifacts will be stored in the `dist/` directory.
 
 ## Architecture
 
-## How it works
+## Demo
 
 ### Home page
 
 ![Image of the home page](src/assets/img/homepage.PNG)
 
 ###  Detail on a country 
-(_By clicking on the corresponding slice of the pie chart on home page_)\
+(_By clicking on the corresponding slice of the pie chart on home page_)
+
 ![Image of the detail page](src/assets/img/detailpage.PNG)
 
 
