@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MedalsByDatesLineChartComponent } from './medals-by-dates-line-chart.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 describe('MedalsByDatesLineChartComponent', () => {
   let component: MedalsByDatesLineChartComponent;
@@ -8,6 +10,10 @@ describe('MedalsByDatesLineChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        NgxChartsModule
+      ],
       declarations: [MedalsByDatesLineChartComponent]
     })
     .compileComponents();

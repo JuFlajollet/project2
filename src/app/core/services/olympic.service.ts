@@ -33,12 +33,6 @@ export class OlympicService {
     return this.olympics$.asObservable();
   }
 
-  getOlympicCountryById(olympicCountryId: number): Observable<OlympicCountry> {
-    return this.getOlympics().pipe(
-      map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.id === olympicCountryId)[0])
-    );
-  }
-
   getOlympicCountryByCountry(country: string): Observable<OlympicCountry> {
     return this.getOlympics().pipe(
       filter((olympicCountries: OlympicCountry[]) => olympicCountries.length > 0),

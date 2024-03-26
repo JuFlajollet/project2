@@ -5,8 +5,6 @@ import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({
   selector: 'app-error',
-  standalone: true,
-  imports: [],
   templateUrl: './error.component.html',
   styleUrl: './error.component.scss'
 })
