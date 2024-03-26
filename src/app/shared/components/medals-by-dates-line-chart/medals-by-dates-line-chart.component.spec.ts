@@ -8,7 +8,7 @@ describe('MedalsByDatesLineChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MedalsByDatesLineChartComponent]
+      declarations: [MedalsByDatesLineChartComponent]
     })
     .compileComponents();
     

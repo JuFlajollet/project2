@@ -3,7 +3,6 @@ import { Observable, map, of, tap } from 'rxjs';
 import { ChartLineData } from 'src/app/core/models/ChartLineData';
 import { ChartLineDataSerie } from 'src/app/core/models/ChartLineDataSerie';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
-import { Participation } from 'src/app/core/models/Participation';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 
 @Component({

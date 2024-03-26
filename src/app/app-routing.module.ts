@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/components/home/home.component';
 import { NotFoundComponent } from './pages/components/not-found/not-found.component';
 import { DetailComponent } from './pages/components/detail/detail.component';
+import { ErrorComponent } from './pages/components/error/error.component';
 
 const routes: Routes = [
   {
@@ -10,13 +11,21 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: ':country', // wildcard
+    path: 'error',
+    component: ErrorComponent,
+  },
+  {
+    path: 'notfound',
+    component: NotFoundComponent,
+  },
+  {
+    path: ':country',
     component: DetailComponent,
   },
   {
     path: '**', // wildcard
-    component: NotFoundComponent,
-  },
+    redirectTo: 'notfound',
+  }
 ];
 
 @NgModule({

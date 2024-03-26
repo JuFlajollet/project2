@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable} from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
 import { OlympicCountry } from '../models/Olympic';
 import { Participation } from '../models/Participation';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,17 +13,18 @@ export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<OlympicCountry[]>([]); 
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   loadInitialData(): Observable<OlympicCountry[]> {
     return this.http.get<OlympicCountry[]>(this.olympicUrl).pipe(
       tap((value: OlympicCountry[]) => this.olympics$.next(value)),
-      catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error(error);
-        // can be useful to end loading state and let the user know something went wrong
-        //this.olympics$.next(null);
-        return caught;
+      catchError((error) => {
+        console.error(`Error occurred while loading data.`);
+        this.router.navigateByUrl("/error");
+        throw error;
       })
     );
   }
@@ -39,6 +41,7 @@ export class OlympicService {
 
   getOlympicCountryByCountry(country: string): Observable<OlympicCountry> {
     return this.getOlympics().pipe(
+      filter((olympicCountries: OlympicCountry[]) => olympicCountries.length > 0),
       map((olympicCountries: OlympicCountry[]) => olympicCountries.filter(olympicCountry => olympicCountry.country.localeCompare(country, undefined, { sensitivity: 'base' }) === 0)[0])
     );
   }
