@@ -8,25 +8,32 @@ This project was updated with [Angular CLI](https://github.com/angular/angular-c
 
 ## Development server
 
-\_Requirements:\_
+_Requirements:_
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-Clone the repository locally using Git by running `git clone https://github.com/JuFlajollet/project2-telesport.git` in a terminal.&nbsp;
-Move to the directory of your local clone and run `npm install` to install the necessary dependencies. &nbsp;
-Run `ng serve` to start a development server.&nbsp;
-Navigate to `http://localhost:4200/` to see the application running. &nbsp;
+Clone the repository locally using Git by running `git clone https://github.com/JuFlajollet/project2-telesport.git` in a terminal.\
+Move to the directory of your local clone and run `npm install` to install the necessary dependencies.\
+Run `ng serve` to start a development server.\
+Navigate to `http://localhost:4200/` to see the application running.\
 The application will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build` to build the project.\
+The build artifacts will be stored in the `dist/` directory.
 
 ## How it works
 
-![]()
+### Home page
 
-![]()
+![Image of the home page](src/assets/img/homepage.png)
+\
+\
+\
+###  Detail on a country 
+(_By clicking on the corresponding slice of the pie chart on home page_)
+![Image of the detail page](src/assets/img/detailpage.PNG)
 
 ## Architecture
 
